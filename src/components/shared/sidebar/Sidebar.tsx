@@ -5,7 +5,7 @@ import SidebarLibrary from "./SidebarLibrary";
 export default function Sidebar() {
   return (
     <div
-      className="flex flex-col z-50 w-[360px] items-start h-screen
+      className="flex flex-col fixed z-50 w-[360px] items-start h-screen
      space-y-2 justify-start"
     >
       <div className="py-5 w-full mx-1 my-1 rounded-md bg-black/30">

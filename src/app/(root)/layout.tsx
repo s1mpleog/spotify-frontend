@@ -12,7 +12,7 @@ const layout: FC<layoutProps> = ({ children }) => {
       <aside className="">
         <Sidebar />
       </aside>
-      <section className="flex flex-col w-full">
+      <section className="flex flex-col w-full pl-[360px]">
         <nav className="flex items-center justify-between">
           <Navbar />
         </nav>

@@ -4,6 +4,8 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import ToastProvider from "@/providers/ToastProvider";
+import { UserContextProvider } from "@/contexts/UserContext";
+import { SongContextProvider } from "@/contexts/SongContext";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -26,7 +28,11 @@ export default function RootLayout({
           outfit.className
         )}
       >
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <ReactQueryProvider>
+          <UserContextProvider>
+            <SongContextProvider>{children}</SongContextProvider>
+          </UserContextProvider>
+        </ReactQueryProvider>
         <ToastProvider />
       </body>
     </html>

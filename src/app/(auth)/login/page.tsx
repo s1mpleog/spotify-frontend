@@ -1,3 +1,4 @@
+import LoginForm from "@/components/form/LoginForm";
 import type { Metadata } from "next";
 import React from "react";
 
@@ -6,5 +7,9 @@ export const metadata: Metadata = {
 };
 
 export default function LoginPage() {
-  return <div>LoginPage</div>;
+  return (
+    <div>
+      <LoginForm />
+    </div>
+  );
 }
