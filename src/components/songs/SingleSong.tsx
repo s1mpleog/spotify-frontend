@@ -4,8 +4,8 @@ import * as songService from "@/services/song.service";
 import { useQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import Image from "next/image";
-import React from "react";
-import ShowArtist from "../artists/ShowArtist";
+import React, { useEffect } from "react";
+import ShowArtist from "./ArtistSong";
 import PlaySong from "./PlaySong";
 
 interface SingleSongProps {
@@ -18,6 +18,13 @@ export default function SingleSong({ id }: SingleSongProps) {
     queryFn: () => songService.getSongById(id),
   });
 
+  useEffect(() => {
+    document.title = `${data?.song.title} by ${data?.song.artist.name}`;
+
+    return () => {
+      document.title = "Spotify - Web Player: Music for everyone";
+    };
+  });
   if (isLoading) {
     return (
       <div className="flex items-center justify-center h-screen overflow-hidden -mt-[120px]">
@@ -41,7 +48,7 @@ export default function SingleSong({ id }: SingleSongProps) {
           <div className="flex max-w-7xl mx-auto border-b pb-10 items-end justify-start gap-10">
             <div>
               <Image
-                className="rounded-md object-cover max-w-[250px]"
+                className="rounded-md object-cover max-w-[250px] max-h-[250px]"
                 src={data?.song.poster.url}
                 alt={data?.song.title}
                 width={250}
@@ -66,6 +73,11 @@ export default function SingleSong({ id }: SingleSongProps) {
                 <p>{data.song.release_date}</p>
                 <li className="mx-1" aria-hidden={true} />
                 <p>{data.song.total_length}</p>
+              </div>
+              <div className="max-w-3xl my-6">
+                <p className="line-clamp-3 font-medium text-gray-300">
+                  {data.song.description}
+                </p>
               </div>
             </div>
           </div>

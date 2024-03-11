@@ -6,6 +6,7 @@ import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import ToastProvider from "@/providers/ToastProvider";
 import { UserContextProvider } from "@/contexts/UserContext";
 import { SongContextProvider } from "@/contexts/SongContext";
+import { ArtistContextProvider } from "@/contexts/ArtistContext";
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -30,7 +31,9 @@ export default function RootLayout({
       >
         <ReactQueryProvider>
           <UserContextProvider>
-            <SongContextProvider>{children}</SongContextProvider>
+            <SongContextProvider>
+              <ArtistContextProvider>{children}</ArtistContextProvider>
+            </SongContextProvider>
           </UserContextProvider>
         </ReactQueryProvider>
         <ToastProvider />

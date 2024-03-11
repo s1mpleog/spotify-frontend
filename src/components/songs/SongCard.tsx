@@ -18,7 +18,7 @@ export default function SongCard({
   return (
     <Link
       href={`song/${href}`}
-      className="flex flex-col w-[200px] hover:opacity-80 transition-all duration-200  text-left p-5 rounded-md bg-[#181818] shadow-md items-center justify-start space-y-2"
+      className="flex flex-col w-[200px] hover:opacity-80 transition-all duration-200 text-left px-5 py-3 rounded-md bg-[#181818] shadow-md items-center justify-start space-y-2"
     >
       <div>
         <Image

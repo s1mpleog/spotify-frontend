@@ -1,40 +1,26 @@
-import Image from "next/image";
+"use client";
 import React from "react";
+import ArtistCard from "./ArtistCard";
+import { useArtistContext } from "@/contexts/ArtistContext";
 
-interface ShowArtistProps {
-  artist: {
-    age: number;
-    avatar: {
-      url: string;
-      public_id: string;
-    };
-    bio: string;
-    country: string;
-    gender: string;
-    genre: string;
-    name: string;
-    songs: string[];
-    __v: number;
-    _id: string;
-  };
-}
-
-export default function ShowArtist({ artist }: ShowArtistProps) {
+export default function ShowArtist() {
+  const { artists, isLoading } = useArtistContext();
   return (
-    <div className="flex items-center gap-5 justify-start">
-      <div>
-        <Image
-          className="rounded-full object-cover w-[100px] h-[100px]"
-          width={100}
-          height={100}
-          src={artist?.avatar.url}
-          alt={artist.name}
-        />
+    <>
+      <div className="my-10">
+        <h4 className="text-4xl font-bold">Top Artists</h4>
       </div>
-      <div className="font-medium">
-        <p>Artist</p>
-        <p className="text-lg">{artist.name}</p>
+      <div className="grid grid-cols-6 gap-y-6">
+        {artists?.artist.map((artist) => (
+          <ArtistCard
+            key={artist._id}
+            isLoading={isLoading}
+            name={artist.name}
+            image={artist.avatar.url}
+            href={artist._id}
+          />
+        ))}
       </div>
-    </div>
+    </>
   );
 }

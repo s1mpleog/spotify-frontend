@@ -124,3 +124,23 @@ export type ISingleSong = {
     };
   };
 };
+
+export interface Artist {
+  avatar: {
+    url: string;
+  };
+  _id: string;
+  name: string;
+  bio: string;
+  age: number;
+  genre: string;
+  country: string;
+  gender: string;
+  songs: string[];
+  __v: number;
+}
+
+export interface IArtistApiResponse {
+  success: boolean;
+  artist: Artist[];
+}
