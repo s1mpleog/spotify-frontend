@@ -5,7 +5,7 @@ import SongCard from "./SongCard";
 import Loader from "../shared/Loader";
 
 export default function ShowSongs() {
-  const { songs, isError, isLoading } = useSongContext();
+  const { songs, isLoading } = useSongContext();
 
   if (isLoading) {
     return <Loader />;
@@ -14,7 +14,7 @@ export default function ShowSongs() {
   return (
     <>
       <h2 className="text-4xl font-bold my-8">Top Songs For You</h2>
-      <div className="grid grid-cols-6 gap-y-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-y-6">
         {songs?.songs.map((song) => (
           <SongCard
             href={song._id}

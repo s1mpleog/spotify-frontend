@@ -7,6 +7,7 @@ import Image from "next/image";
 import React, { useEffect } from "react";
 import ShowArtist from "./ArtistSong";
 import PlaySong from "./PlaySong";
+import SongPlayer from "../shared/SongPlayer";
 
 interface SingleSongProps {
   id: string;
@@ -85,12 +86,19 @@ export default function SingleSong({ id }: SingleSongProps) {
             <ShowArtist artist={data?.song.artist} />
           </div>
           <div className="bg-black bottom-1 absolute w-full inset-x-0 z-[100]">
-            <PlaySong
+            <SongPlayer
+              artist={data.song.artist.name}
+              name={data.song.title}
+              song={data.song.file.url}
+              poster={data.song.poster.url}
+              showControls={false}
+            />
+            {/* <PlaySong
               poster={data.song.poster.url}
               name={data.song.title}
               artist={data.song.artist.name}
               song={data.song.file}
-            />
+            /> */}
           </div>
         </>
       )}

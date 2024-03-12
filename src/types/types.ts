@@ -144,3 +144,31 @@ export interface IArtistApiResponse {
   success: boolean;
   artist: Artist[];
 }
+
+export interface ISingleArtist {
+  artist: {
+    avatar: {
+      url: string;
+    };
+    _id: string;
+    name: string;
+    bio: string;
+    age: number;
+    genre: string;
+    country: string;
+    gender: string;
+    songs: [
+      _id: string,
+      file: {
+        url: string;
+      },
+      poster: {
+        url: string;
+      },
+      title: string,
+      description: string,
+      totat_length: string,
+      release_date: string
+    ];
+  };
+}
